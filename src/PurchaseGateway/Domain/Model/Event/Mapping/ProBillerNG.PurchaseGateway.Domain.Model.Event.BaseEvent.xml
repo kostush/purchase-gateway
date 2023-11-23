@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Model\Event\BaseEvent" exclusion-policy="NONE">
+        <property name="aggregateId" expose="true" type="string"/>
+        <property name="occurredOn" expose="true">
+            <type><![CDATA[DateTimeImmutable<'Y-m-d H:i:s.u'>]]></type>
+        </property>
+        <property name="version" expose="false" type="integer"/>
+    </class>
+</serializer>

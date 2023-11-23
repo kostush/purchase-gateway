@@ -1,0 +1,29 @@
+# don't ignore my .gitkeeps
+
+!/storage/
+/storage/*
+
+!/storage/app/
+/storage/app/*
+!/storage/app/.gitkeep
+
+!/storage/framework/
+/storage/framework/*
+!/storage/framework/cache/
+/storage/framework/cache/*
+!/storage/framework/cache/.gitkeep
+
+!/storage/framework/views/
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+
+# do not keep saved session into git except .gitkeep
+!/storage/framework/sessions/
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+
+!/storage/logs/
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+.env*

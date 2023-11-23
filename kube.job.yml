@@ -1,0 +1,235 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-legacy-worker-one
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-legacy-worker-one
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-legacy", "1"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-legacy-worker-two
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-legacy-worker-two
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-legacy", "2"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-legacy-worker-three
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-legacy-worker-three
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-legacy", "3"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-legacy-worker-four
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-legacy-worker-four
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-legacy", "4"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-legacy-worker-five
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-legacy-worker-five
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-legacy", "5"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-member-profile-worker-one
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-member-profile-worker-one
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-member-profile", "1"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-member-profile-worker-two
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-member-profile-worker-two
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-member-profile", "2"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-member-profile-worker-three
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-member-profile-worker-three
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-member-profile", "3"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-member-profile-worker-four
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-member-profile-worker-four
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-member-profile", "4"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-to-member-profile-worker-five
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-to-member-profile-worker-five
+          command: ["php", "lumen/artisan", "ng:message:consumer-purchase-to-member-profile", "5"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-event-republish-worker
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-event-republish-worker
+          command: ["php", "lumen/artisan", "ng:failed-event-publish:retry"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: purchase-gateway-send-email-worker
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-send-email-worker
+          command: ["php", "lumen/artisan", "ng:worker", "send-email", "run"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1beta1
+kind: Job
+metadata:
+  name: purchase-gateway-bundle-addons-cronjob
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-send-email-worker
+          command: ["php", "lumen/artisan", "ng:domain:project", "bundle-addons", "run"]
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1beta1
+kind: Job
+metadata:
+  name: purchase-gateway-business-groups-sites-cronjob
+  #namespace: purchase-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-send-email-worker
+          command: ["php", "lumen/artisan", "ng:domain:project", "business-group-sites", "run"]
+      restartPolicy: Never

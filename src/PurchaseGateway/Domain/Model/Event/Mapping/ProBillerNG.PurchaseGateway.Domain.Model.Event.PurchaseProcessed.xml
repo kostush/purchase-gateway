@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Model\Event\PurchaseProcessed" exclusion-policy="NONE">
+        <property name="purchaseId" expose="true" type="string"/>
+        <property name="transactionCollection" expose="true" type="array"/>
+        <property name="sessionId" expose="true" type="string"/>
+        <property name="siteId" expose="true" type="string"/>
+        <property name="status" expose="true" type="string"/>
+        <property name="memberId" expose="true" type="string"/>
+        <property name="subscriptionId" expose="true" type="string"/>
+        <property name="memberInfo" expose="true" type="array"/>
+        <property name="crossSalePurchaseData" expose="true" type="array"/>
+        <property name="payment" expose="true" type="array"/>
+        <property name="itemId" expose="true" type="string"/>
+        <property name="bundleId" expose="true" type="string"/>
+        <property name="addOnId" expose="true" type="string"/>
+        <property name="threeDRequired" expose="true" type="boolean"/>
+        <property name="threedVersion" expose="true" type="int"/>
+        <property name="threedFrictionless" expose="true" type="boolean"/>
+        <property name="isNsf" expose="true" type="boolean"/>
+        <property name="skipVoidTransaction" expose="true" type="boolean"/>
+        <property name="isThirdParty" expose="true" type="boolean"/>
+        <property name="subscriptionUsername" expose="true" type="string"/>
+        <property name="subscriptionPassword" expose="true" type="string"/>
+        <property name="atlasCode" expose="true" type="string"/>
+        <property name="atlasData" expose="true" type="string"/>
+        <property name="ipAddress" expose="true" type="string"/>
+        <property name="amount" expose="true" type="float"/>
+        <property name="rebillAmount" expose="true" type="float"/>
+        <property name="rebillFrequency" expose="true" type="int"/>
+        <property name="initialDays" expose="true" type="int"/>
+        <property name="transformedPrices" expose="true" type="array"/>
+        <property name="isTrial" expose="true" type="boolean"/>
+        <property name="amounts" expose="true" type="array"/>
+        <property name="entrySiteId" expose="true" type="string"/>
+        <property name="isExistingMember" expose="true" type="boolean"/>
+        <property name="attemptBiller" expose="true" type="array"/>
+        <property name="paymentMethod" expose="true" type="string"/>
+        <property name="trafficSource" expose="true" type="string"/>
+        <property name="isUsernamePadded" expose="true" type="boolean"/>
+        <property name="isImportedByApi" expose="true" type="boolean"/>
+    </class>
+</serializer>

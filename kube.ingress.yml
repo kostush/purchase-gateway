@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: purchase-gateway-web
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  namespace: purchase-gateway
+spec:
+  rules:
+    - host: purchase-gateway.local
+      http:
+        paths:
+         - backend:
+            serviceName: purchase-gateway-web
+            servicePort: 8108

@@ -1,0 +1,28 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Model\Purchase" table="purchases">
+        <id name="purchaseId" type="PurchaseId" column="purchase_id"/>
+        <field name="memberId" type="MemberId" length="36" nullable="false" column="member_id"/>
+        <field name="sessionId" type="SessionId" length="36" nullable="false" column="session_id"/>
+        <field name="createdAt" type="datetime_immutable" nullable="false" column="created_at"/>
+
+        <many-to-many field="items" target-entity="BaseProcessedItem">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+
+            <join-table name="purchase_processed_items">
+                <join-columns>
+                    <join-column name="purchase_id" referenced-column-name="purchase_id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="item_id" referenced-column-name="item_id" unique="true"/>
+                </inverse-join-columns>
+            </join-table>
+
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

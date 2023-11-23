@@ -1,0 +1,27 @@
+title: nonExistingError
+type: object
+description: Member/Item does not exist
+x-examples:
+  non existing member:
+    value:
+      error: Member does not exist for this bundle
+      code: 1020
+  non existing item:
+    value:
+      error: Item does not exist for this bundle
+      code: 1021
+properties:
+  error:
+    $ref: ./error.v1.yaml
+  code:
+    $ref: ./code.v1.yaml
+  sessionId:
+    $ref: ./sessionId.v1.yaml
+  correlationId:
+    $ref: ./correlation-idResponse.v1.yaml
+required:
+  - error
+  - code
+  - traceId
+  - sessionId
+  - correlationId

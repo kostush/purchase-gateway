@@ -1,0 +1,31 @@
+FROM gcr.io/mg-probiller-stage/php:master as composer
+LABEL stage=intermediate
+ENV COMPOSER_V=1.10.7
+COPY ./ .
+RUN apt-get -yqq update \
+    && apt-get install -yqq --no-install-recommends git unzip curl ca-certificates \
+    && apt-get clean all \
+    && apt-get autoremove -y \
+    && git config --global http.sslVerify false \
+    && curl -sL https://getcomposer.org/download/${COMPOSER_V}/composer.phar -O \
+    && php composer.phar install --no-dev \
+    && rm -rf tests composer.phar \
+    && find . -type d -name .git -print0 | xargs -0 -n1 rm -rf
+
+FROM alpine
+ARG VERSION
+ARG COMMIT_SHA
+ARG BUILD_DATE
+LABEL org.opencontainers.image.version=$VERSION \
+      org.opencontainers.image.revision=$COMMIT_SHA \
+      org.opencontainers.image.created=$BUILD_DATE
+RUN mkdir /src \
+    && apk add --no-cache bash
+WORKDIR /src
+COPY --from=composer /var/www/html/ .
+
+
+
+
+
+

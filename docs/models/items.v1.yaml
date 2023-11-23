@@ -1,0 +1,73 @@
+title: items
+type: object
+properties:
+  businessRevenueStream:
+    type: string
+    enum:
+      - Initial Sale
+      - Secondary Sale
+  skuId:
+    type: string
+  productInventoryId:
+    type: string
+    enum:
+      - Marketplace
+      - Pricing tool
+      - Probiller Legacy Products
+      - ProbillerNG Bundles
+      - MDH Price Point System
+      - Nutaku Pricing
+  displayName:
+    type: string
+  itemDescription:
+    type: string
+  quantity:
+    type: number
+  priceInfo:
+    type: object
+    properties:
+      basePrice:
+        type: number
+      expiresInDays:
+        type: number
+      taxes:
+        type: number
+      finalPrice:
+        type: number
+  rebill:
+    type: object
+    properties:
+      basePrice:
+        type: number
+      rebillDays:
+        type: number
+      taxes:
+        type: number
+      finalPrice:
+        type: number
+  tax:
+    type:
+      - string
+      - object
+    properties:
+      taxApplicationId:
+        type: string
+      productClassification:
+        type: string
+      taxName:
+        type: string
+      taxRate:
+        type: number
+      taxType:
+        type: string
+      displayChargedAmount:
+        type: boolean
+  legacyMapping:
+    type: array
+    items: {}
+  otherData:
+    type: array
+    items: {}
+  entitlements:
+    type: array
+    items: {}

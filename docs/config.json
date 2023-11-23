@@ -1,0 +1,8 @@
+{
+  "invokerPackage": "ProbillerNG\\PurchaseGatewayClient",
+  "variableNamingConvention": "camelCase",
+  "packageName": "PurchaseGatewayClient",
+  "srcBasePath": "src",
+  "gitUserId": "probiller-ng",
+  "gitRepoId": "purchase-gateway-client"
+}

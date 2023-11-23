@@ -1,0 +1,19 @@
+title: Netbilling
+required:
+  - accountId
+  - siteTag
+  - merchantPassword
+properties:
+  siteTag:
+    description: Site Tag
+    type: string
+    example: CCUP
+  accountId:
+    description: Account Id
+    type: string
+    example: '1390920700'
+  merchantPassword:
+    type: string
+    example: 'HDFPitBulltbmudogMRo5'
+type: object
+description: Biller Fields for Netbilling

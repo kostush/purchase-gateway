@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Projector\ProjectedItem\BusinessGroupSite" exclusion-policy="NONE">
+        <property name="id" type="string"/>
+        <property name="siteId" type="string"/>
+        <property name="businessGroupId" type="string"/>
+        <property name="url" type="string"/>
+        <property name="name" type="string"/>
+        <property name="phoneNumber" type="string"/>
+        <property name="skypeNumber" type="string"/>
+        <property name="supportLink" type="string"/>
+        <property name="mailSupportLink" type="string"/>
+        <property name="messageSupportLink" type="string"/>
+        <property name="postbackUrl" type="string"/>
+        <property name="serviceCollection" type="array"/>
+        <property name="isNsfSupported" type="bool"/>
+        <property name="isStickyGateway" type="bool"/>
+    </class>
+</serializer>

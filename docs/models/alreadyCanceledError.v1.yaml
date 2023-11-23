@@ -1,0 +1,25 @@
+title: alreadyCanceledError
+type: object
+description: Bundle already cancel error
+x-examples:
+  bundle-already-cancelled:
+    value:
+      error: Bundle already cancelled
+      code: 1023
+properties:
+  error:
+    $ref: ./error.v1.yaml
+  code:
+    $ref: ./code.v1.yaml
+  traceId:
+    $ref: ./traceid.v1.yaml
+  correlationId:
+    $ref: ./correlation-idResponse.v1.yaml
+  sessionId:
+    $ref: ./sessionId.v1.yaml
+required:
+  - error
+  - code
+  - traceId
+  - sessionId
+  - correlationId

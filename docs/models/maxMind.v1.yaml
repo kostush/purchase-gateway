@@ -1,0 +1,57 @@
+title: maxMind
+type: object
+description: Geo location information
+properties:
+  x-geo-country-code:
+    type: string
+    example: US
+  x-geo-country-code3:
+    type: string
+    example: USA
+  x-geo-country-name:
+    type: string
+    example: United States
+  x-geo-city-country-code:
+    type: string
+    example: US
+  x-geo-city-country-code3:
+    type: string
+    example: USA
+  x-geo-city-country-name:
+    type: string
+    example: United States
+  x-geo-region:
+    type: string
+    example: UT
+  x-geo-city:
+    type: string
+    description: Mandatory in case of paymentType = checks
+    example: Salt Lake city
+  x-geo-postal-code:
+    type: string
+    description: Mandatory in case of paymentType = checks
+    example: '84116'
+  x-geo-city-continent-code:
+    type: string
+    example: NA
+  x-geo-latitude:
+    type: string
+    example: '407849'
+  x-geo-longitude:
+    type: string
+    example: '-111.9338'
+  x-geo-region-code:
+    type: string
+    example: UT
+  x-geo-continent-name:
+    type: string
+    example: North America
+  x-geo-isp:
+    type: string
+    example: COMCAST-7922
+  x-geo-connection-type:
+    type: string
+    example: Cable/DSL
+  x-geo-asn:
+    type: string
+    example: '7922'

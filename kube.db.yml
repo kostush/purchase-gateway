@@ -1,0 +1,71 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purchase-gateway-database
+  namespace: purchase-gateway
+  labels:
+    app: purchase-gateway-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purchase-gateway-database
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: purchase-gateway-database
+    spec:
+      containers:
+        - name: purchase-gateway-database
+          image: harbor.mgcorp.co/probiller/probiller-ng/mysql
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DATABASE
+              value: ng_purchase_gateway
+          volumeMounts:
+            - name: mysql-pv
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-pv
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: purchase-gateway
+  labels:
+    app: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: purchase-gateway-database
+  namespace: purchase-gateway
+  labels:
+    component: purchase-gateway-database
+spec:
+  selector:
+    app: purchase-gateway-database
+  ports:
+    - protocol: TCP
+      port: 3433
+      name: "api-mysql"
+      targetPort: 3306
+  type: LoadBalancer

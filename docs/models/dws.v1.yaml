@@ -1,0 +1,5 @@
+title: dws
+type: object
+properties:
+  maxMind:
+    $ref: ./maxMind.v1.yaml

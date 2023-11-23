@@ -1,0 +1,12 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Projector\ProjectedItem\BusinessGroup" table="business_groups">
+        <id name="businessGroupId" type="string" column="business_group_id"/>
+        <field name="privateKey" type="string" column="private_key"/>
+        <field name="publicKeyCollection" type="DoctrinePublicKeyCollection" nullable="true" column="public_keys"/>
+        <field name="descriptor" type="string" nullable="true" column="descriptor"/>
+    </entity>
+</doctrine-mapping>

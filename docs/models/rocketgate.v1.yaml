@@ -1,0 +1,21 @@
+properties:
+  merchantId:
+    type: string
+    example: "1390920710"
+  merchantPassword:
+    type: string
+    example: "XujtRaMonMatTuw"
+  merchantInvoiceId:
+    type: string
+    example: "e15e10d6-5da57eea4887c7.18933267"
+  merchantCustomerId:
+    type: string
+    example: "8b96a769-5da57eea488752.62179187"
+required:
+  - merchantId
+  - merchantPassword
+  - merchantInvoiceId
+  - merchantCustomerId
+title: Rocketgate
+type: object
+description: Biller Fields for Rocketgate

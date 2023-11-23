@@ -1,0 +1,99 @@
+title: invoice
+type: object
+properties:
+  invoiceId:
+    type: string
+  memberId:
+    type: string
+  usingMemberProfile:
+    type: boolean
+  clientIp:
+    type: string
+  redirectUrl:
+    type: string
+  postbackUrl:
+    type: string
+  paymentInfo:
+    type: object
+    properties:
+      currency:
+        type: string
+      paymentType:
+        type: string
+        enum:
+          - alipay
+          - banktransfer
+          - cc
+          - check
+          - checks
+          - crypto
+          - cryptocurrency
+          - elv
+          - ewallet
+          - giftcard
+          - giftcards
+          - mcb
+          - paysafecard
+          - prepaywallet
+          - sepa
+          - skrill
+          - sofortbanking
+          - unionpay
+          - wechat
+      paymentMethod:
+        type: string
+        enum:
+          - alipay
+          - americanexpress
+          - bccard
+          - bancontact
+          - cartebleue
+          - checks
+          - cryptocurrency
+          - dinacard
+          - dinersclub
+          - directdebit
+          - discover
+          - ec
+          - elv
+          - eps
+          - epsssl
+          - euteller
+          - giftcards
+          - giropay
+          - interaconline
+          - jcb
+          - maestro
+          - mastercard
+          - mastercarddebit
+          - neosurf
+          - neteller
+          - onlineuberweisung
+          - poli
+          - paypal
+          - paysafecard
+          - postepay
+          - przelewy24
+          - qiwi
+          - sepadirectdebit
+          - safetypay
+          - skrill
+          - sofortbanking
+          - sofortuberweisung
+          - switch
+          - trustpay
+          - unionpay
+          - visa
+          - visadebit
+          - wechat
+          - epaybg
+          - ideal
+          - toditocash
+          - zelle
+          - cc
+          - mir
+          - ccunionpay
+  Charges:
+    type: array
+    items:
+      $ref: ./mgpgCharges.v1.yaml

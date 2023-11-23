@@ -1,0 +1,43 @@
+title: charges
+type: object
+properties:
+  businessTransactionOperation:
+    type: string
+    enum:
+      - subscriptionPurchase
+      - subscriptionTrialUpgrade
+      - subscriptionUpgrade
+      - subscriptionExpiredRenew
+      - subscriptionRecurringCharge
+      - subscriptionCancel
+      - subscriptionDisable
+      - subscriptionExpired
+      - singleChargePurchase
+      - recurringProductPurchase
+      - recurringProductRecurringCharge
+      - recurringProductCancel
+      - recurringProductExpired
+      - refund
+  chargeId:
+    type: string
+  siteId:
+    type: string
+  isPrimaryCharge:
+    type: boolean
+  chargeDescription:
+    type: boolean
+  isTrial:
+    type: boolean
+  status:
+    type: string
+    enum:
+      - success
+      - decline
+      - aborted
+      - error
+  transactionId:
+    type: string
+  items:
+    type: array
+    items:
+      $ref: ./items.v1.yaml

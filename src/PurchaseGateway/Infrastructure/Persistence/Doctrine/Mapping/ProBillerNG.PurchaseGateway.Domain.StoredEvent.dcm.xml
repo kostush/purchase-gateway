@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ProBillerNG\PurchaseGateway\Domain\StoredEvent" table="stored_events">
+
+    <id name="eventId" type="string" length="36" column="event_id"/>
+
+    <field name="aggregateId" type="string" length="36" column="aggregate_id" nullable="false"/>
+    <field name="eventBody" type="text" column="event_body" length="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="typeName" type="string" column="type_name" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="occurredOn" type="DateTimeImmutableMicroseconds" column="occurred_on" nullable="false"/>
+  </entity>
+</doctrine-mapping>

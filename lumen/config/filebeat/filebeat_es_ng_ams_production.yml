@@ -1,0 +1,29 @@
+filebeat.prospectors:
+  - input.type: log
+    pipeline: "ng-log-pipeline"
+    paths:
+      - /home/app_billing/applications/purchase-gateway/production/logs/purchase-gateway.log
+    fields:
+      type: "log"
+  - input.type: log
+    pipeline: "ng-event-pipeline"
+    paths:
+      - /home/app_billing/applications/purchase-gateway/production/logs/purchase-gateway-events.log
+    fields:
+      type: "event"
+
+setup.template.enabled: false
+setup.template.overwrite: false
+
+processors:
+  - drop_fields:
+      fields: ["offset", "beat.name", "beat.version"]
+
+output.elasticsearch:
+  hosts: ["ded1557.ded.reflected.net:9200", "ded1558.ded.reflected.net:9200", "ded1559.ded.reflected.net:9200"]
+  protocol: https
+  ssl.certificate_authorities:
+    - /etc/filebeat/ca.crt
+  compression_level: 9
+  worker: 3
+  index: "ng-production-logs-%{[fields.type]:other}-%{+yyyy.MM.dd}"

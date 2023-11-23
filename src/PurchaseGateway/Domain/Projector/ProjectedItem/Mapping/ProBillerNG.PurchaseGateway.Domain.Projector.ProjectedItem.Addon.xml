@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Projector\ProjectedItem\Addon" exclusion-policy="NONE">
+        <property name="addonId" type="string"/>
+        <property name="type" type="string"/>
+    </class>
+</serializer>

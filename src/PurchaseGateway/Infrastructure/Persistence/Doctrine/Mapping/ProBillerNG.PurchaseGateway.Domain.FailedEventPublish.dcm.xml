@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ProBillerNG\PurchaseGateway\Domain\FailedEventPublish" table="failed_event_publish">
+
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+
+    <field name="aggregateId" length="36" column="aggregate_id"/>
+    <field name="published" type="boolean" column="published"/>
+    <field name="retries" type="integer" column="retries"/>
+    <field name="lastAttempted" type="DateTimeImmutableMicroseconds" column="last_attempted" nullable="false"/>
+    <field name="timestamp" type="DateTimeImmutableMicroseconds" column="timestamp" nullable="false"/>
+  </entity>
+</doctrine-mapping>

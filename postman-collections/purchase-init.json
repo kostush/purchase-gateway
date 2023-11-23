@@ -1,0 +1,653 @@
+{
+	"info": {
+		"_postman_id": "367527df-e1d0-4f74-ba10-1a9a77611a1c",
+		"name": "Purchase Init",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Purchase Init (Cross Sale for month a year) with ip captcha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n\t\"bundleId\": \"4c22fe36-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"4c22ff8a-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"4c2300b6-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init (Cross Sale for a 7 days trial) with ip captcha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init (Cross Sale for a 2 days trial) with ip captcha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"10a0907e-5b6c-445f-a2e6-beefeedd3cda\",\r\n    \"addonId\" : \"992f9e37-f930-4e30-9136-4e70bc5b7083\",\r\n    \"priceId\" : \"60bf5bcb-ac64-496c-acc5-9c7cf54a1869\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init (Cross Sale for month and year) without ip captcha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n\t\"bundleId\": \"4c22fe36-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"4c22ff8a-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"4c2300b6-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"127.0.0.1\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init (Cross Sale for a 7 days trial) without ip captcha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"127.0.0.1\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init (Cross Sale for a 2 days trial) without ip captcha Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"10a0907e-5b6c-445f-a2e6-beefeedd3cda\",\r\n    \"addonId\" : \"992f9e37-f930-4e30-9136-4e70bc5b7083\",\r\n    \"priceId\" : \"60bf5bcb-ac64-496c-acc5-9c7cf54a1869\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"127.0.0.1\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init without without site configuration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd2\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init without  cross sale data 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd2\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init without  cross sale data 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd2\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init without  cross sale data 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd2\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase Init without  cross sale data 4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd2\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid siteId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"invalid\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid bundleId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"invalid\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid addonId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"invalid\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid priceId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"invalid\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid currency",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"\",\r\n    \"clientIp\": \"5.135.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase init with invalid id adress",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"siteId\"  : \"4c22fba2-f883-11e8-8eb2-f2801f1b9fd1\",\r\n    \"bundleId\": \"71f57202-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"addonId\" : \"71f5763a-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"priceId\" : \"71f577f2-f896-11e8-8eb2-f2801f1b9fd1\",\r\n    \"currency\": \"\",\r\n    \"clientIp\": \"invalid_ip\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 10,\r\n    \"initialDays\": 5,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 15.00\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8008/api/v1/purchase/init",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"v1",
+						"purchase",
+						"init"
+					]
+				},
+				"description": "This payload will find a weekly cross sale options and captcha true"
+			},
+			"response": []
+		}
+	]
+}

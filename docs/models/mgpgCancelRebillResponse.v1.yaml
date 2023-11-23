@@ -1,0 +1,90 @@
+title: mgpgCancelRebillResponse
+type: object
+description: MGPG cancel rebill Response
+properties:
+  sessionId:
+    description: user flow unique id.
+    type: string
+    example: 7cb0496c-23d8-47a8-b8b4-49eecb719ab0
+  correlationId:
+    description: event chain unique id across services
+    type: string
+    example: 6bee0231-181e-43f1-9243-2c2ae9aaa621
+  transactionId:
+    description: transaction Id
+    type: string
+    example: 6bee0231-181e-43f1-9243-2c2ae9aaa622
+  bundleOperationId:
+    type: string
+    example: 6bee0231-181e-43f1-9243-2c2ae9aaa620
+  nextAction:
+    description: The next action
+    type: object
+    properties:
+      type:
+        description: Type of next action
+        type: string
+        example: finishProcess
+      resolution:
+        description: resolution
+        type: string
+        example: client
+    required:
+      - type
+  invoice:
+    description: invoice of cancel rebill
+    type: object
+    required:
+      - status
+      - nextAction
+      - invoiceId
+      - memberId
+      - isDisabled
+    properties:
+      invoiceId:
+        description: Invoice Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      memberId:
+        description: member Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      usingMemberProfile:
+        description: Member profile is used or ont
+        type: boolean
+        example: true
+      previousTransactionId:
+        description: previous transaction Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      status:
+        description: Status of refund
+        type: string
+        example: success
+      isDisabled:
+        description: Is Disabled or not!
+        type: boolean
+        example: false
+      siteId:
+        description: Site Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      entitlements:
+        description: entitlements
+        type: array
+        items:
+          type: object
+          properties:
+            any:
+              type: object
+              properties:
+                data:
+                  type: string
+
+required:
+  - correlationId
+  - sessionId
+  - bundleOperationId
+  - transactionId
+  - invoice
+  - nextAction

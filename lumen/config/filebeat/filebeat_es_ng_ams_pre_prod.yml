@@ -1,0 +1,40 @@
+filebeat.prospectors:
+  - input.type: log
+    pipeline: "ng-log-pipeline"
+    paths:
+      - /home/app_billing/applications/purchase-gateway/pre-prod/logs/purchase-gateway.log
+    fields:
+      type: "log"
+  - input.type: log
+    pipeline: "ng-event-pipeline"
+    paths:
+      - /home/app_billing/applications/purchase-gateway/pre-prod/logs/purchase-gateway-events.log
+    fields:
+      type: "event"
+  - input.type: log
+    pipeline: "ng-worker-pipeline"
+    paths:
+      - /home/app_billing/applications/purchase-gateway/pre-prod/logs/purchase-gateway-worker.log
+    fields:
+      type: "worker"
+
+setup.template.enabled: false
+setup.template.overwrite: false
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat_purchase-gateway_pre_prod/
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+
+processors:
+  - drop_fields:
+      fields: ["offset", "beat.name", "beat.version"]
+
+output.elasticsearch:
+  hosts: ["ded1527.ded.reflected.net:9200"]
+  compression_level: 9
+  worker: 3
+  index: "ng-pre-prod-logs-%{[fields.type]:other}-%{+yyyy.MM.dd}"

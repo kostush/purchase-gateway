@@ -1,0 +1,27 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Model\Site" table="sites">
+        <id name="id" type="string" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="siteId" type="SiteId" length="36" nullable="false" column="site_id"/>
+        <field name="businessGroupId" type="BusinessGroupId" length="36" nullable="false" column="business_group_id"/>
+        <field name="url" type="string" nullable="true" column="url"/>
+        <field name="name" type="string" column="name"/>
+        <field name="phoneNumber" type="string" nullable="true" column="phone_number"/>
+        <field name="skypeNumber" type="string" nullable="true" column="skype_number"/>
+        <field name="supportLink" type="string" nullable="true" column="support_link"/>
+        <field name="mailSupportLink" type="string" nullable="true" column="mail_support_link"/>
+        <field name="messageSupportLink" type="string" column="message_support_link"/>
+        <field name="postbackUrl" type="string" column="postback_url"/>
+        <field name="serviceCollection" type="DoctrineServiceCollection" nullable="true" column="services"/>
+        <field name="privateKey" type="string" column="private_key"/>
+        <field name="publicKeyCollection" type="DoctrineSitePublicKeyCollection" nullable="true" column="public_keys"/>
+        <field name="descriptor" type="string" nullable="true" column="descriptor"/>
+        <field name="isStickyGateway" type="boolean" column="isStickyGateway"/>
+        <field name="isNsfSupported" type="boolean" column="is_nsf_supported"/>
+    </entity>
+</doctrine-mapping>

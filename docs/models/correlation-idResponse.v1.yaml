@@ -1,0 +1,5 @@
+type: string
+title: correlationId
+description: correlationId
+format: uuid
+example: f622b9a9-fdc7-4ad9-a99a-597942776095

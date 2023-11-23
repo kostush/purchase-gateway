@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Projector\ProjectedItem\BusinessGroup" exclusion-policy="NONE">
+        <property name="businessGroupId" type="string"/>
+        <property name="privateKey" type="string"/>
+        <property name="publicKeyCollection" type="array"/>
+        <property name="descriptor" type="string"/>
+    </class>
+</serializer>

@@ -1,0 +1,5 @@
+type: string
+title: traceId
+format: uuid
+example: 56a3aa36-4921-4016-aa59-eaef799338aa
+description: traceId

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purchase-gateway-web
+  namespace: purchase-gateway
+  labels:
+    app: purchase-gateway-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: purchase-gateway-web
+  template:
+    metadata:
+      labels:
+        app: purchase-gateway-web
+    spec:
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+      containers:
+        - image: ng-nginx
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+        - image: purchase-gateway-image
+          imagePullPolicy: IfNotPresent
+          name: purchase-gateway-php
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "cp -r /var/www/app/. /var/www/html"]

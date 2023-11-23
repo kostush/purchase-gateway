@@ -1,0 +1,10 @@
+---
+include:
+  - project: mg/eng/probiller/gcp/pipelines
+    ref: develop
+    file: /vars.yml
+
+  - project: mg/eng/probiller/gcp/pipelines
+    ref: develop
+    file: /probiller.yml
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ProBillerNG\PurchaseGateway\Domain\EventTracker" table="event_tracker">
+
+    <id name="eventTrackerId" type="string" length="36" column="event_tracker_id"/>
+
+    <field name="eventTrackerType" type="string" length="255" column="event_tracker_type" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+
+    <field name="lastProcessedEventDate" type="DateTimeImmutableMicroseconds" column="last_processed_event_date" nullable="true"/>
+
+    <field name="createdOn" type="datetimetz" column="created_on" nullable="false"/>
+
+    <field name="updatedOn" type="datetimetz" column="updated_on" nullable="false"/>
+
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,232 @@
+openapi: 3.0.1
+
+components:
+  schemas:
+    baseIntegrationEvents:
+      type: object
+      required:
+        - aggregate_id
+        - occurred_on
+        - biller_name
+        - biller_transaction_id
+        - currency
+        - bundle_id
+        - add_on_id
+        - site_id
+        - payment_type
+        - member_id
+        - transaction_id
+        - item_id
+        - first6
+        - last4
+        - amount
+        - created_at
+        - subscription_id
+        - username
+        - password
+      properties:
+        aggregate_id:
+          description: aggregate id
+          type: string
+          example: 123
+        occurred_on:
+          description: occurred on
+          type: string
+          example: 2019-02-13T11:12:19+0000
+        biller_name:
+          description: biller name
+          type: string
+          example: rocketgate
+        biller_transaction_id:
+          description: Biller transaction Id
+          type: string
+          example: "1000168E6766529"
+        purchase_id:
+          description: Purchase Id
+          type: string
+          example: "a0e38f29-ee6d-4217-aeed-00344a46fe70"
+        currency:
+          description: Currency type
+          type: string
+          example: USD
+        bundle_id:
+          description: Bundle Id
+          type: string
+          example: 123
+        add_on_id:
+          description: Addon Id
+          type: string
+          example: 123
+        site_id:
+          description: Site id
+          type: string
+          example: 8051d60a-7fb0-4ef2-8e60-968eee79c104
+        payment_type:
+          description: Payment type
+          type: string
+          example: cc
+        member_id:
+          description: Member id
+          type: string
+          example: 123
+        email:
+          description: Email address
+          type: string
+          example: gisele.framboise@fruity.com
+        phone_number:
+          description: Phone number
+          type: string
+          example: 514 222-5555
+        first_name:
+          description: First Name
+          type: string
+          example: Gisele
+        last_name:
+          description: Last Name
+          type: string
+          example: Framboise
+        address:
+          description: Member address
+          type: string
+          example: 7777 Decarie
+        city:
+          description: City
+          type: string
+          example: Montreal
+        state:
+          description: State
+          type: string
+          example: QC
+        zip:
+          description: Zip code
+          type: string
+          example: H1H1H1
+        country:
+          description: Country
+          type: string
+          example: CA
+        transaction_id:
+          description: Transaction Id
+          type: string
+          example: 41728fc9-f737-438d-a6a2-705613109fda
+        item_id:
+          description: Item Id
+          type: string
+          example: 6163104e-55e7-4d07-ac9f-13aaa1678a40
+        first6:
+          description: First 6 numbers from CC
+          type: string
+          example: 411111
+        last4:
+          description: Last 4 numbers from CC
+          type: string
+          example: 1111
+        amount:
+          description: Amount
+          type: number
+          example: 12.33
+        created_at:
+          description: Created at
+          type: string
+          example: 2019-02-13T10:45:44+0000
+        subscription_id:
+          description: Subscription id
+          type: string
+          example: 123
+        rebill_amount:
+          description: Rebill amount
+          type: number
+          example: 12.3
+        rebill_frequency:
+          description: Rebill frequency
+          type: string
+          example: 1
+        rebill_start:
+          description: Rebill start
+          type: string
+          example: 2
+        username:
+          description: Username
+          type: string
+          example: 123
+        password:
+          description: Password
+          type: string
+          example: 123
+        parent_subscription:
+          description: Parent subscription id
+          type: string
+          example: 41728fc9-f737-438d-a6a2-705613109fda
+        atlas_code:
+          description: Atlas code
+          type: string
+          example: NDU1MDk1OjQ4OjE0Nw
+        atlas_data:
+          description: Atlas data
+          type: string
+          example: atlas data example
+        ip_address:
+          description: Ip address
+          type: string
+          example: 127.0.0.1
+        is_trial:
+          description: Is trial
+          type: boolean
+          example: false
+        is_unlimited:
+          description: Is unlimited
+          type: boolean
+          example: false
+        is_disabled:
+          description: Is disabled
+          type: boolean
+          example: false
+        is_expired:
+          description: Is expired
+          type: boolean
+          example: false
+        is_nsf:
+          description: Is nsf
+          type: boolean
+          example: false
+        is_prepaid:
+          description: Is prepaid
+          type: boolean
+          example: false
+        is_low_risk:
+          description: Is low risk
+          type: boolean
+          example: false
+        require_active_content:
+          description: Require active content
+          type: boolean
+          example: false
+        tax:
+          description: Tax collection
+          type: object
+          properties:
+            initialAmount:
+              $ref: "openapi.yml#/components/schemas/amounts"
+            rebillAmount:
+              $ref: "openapi.yml#/components/schemas/amounts"
+            taxApplicationId:
+              description: Tax identifier
+              type: string
+              example: "60bf5bcb-ac64-496c-acc5-9c7cf54a1869"
+            taxName:
+              description: Tax name
+              type: string
+              example: "Tax Name"
+            taxRate:
+              description: Tax rate
+              type: number
+              format: double
+              example: 0.05
+            custom:
+              description: Tax Custom
+              type: string
+              example: "Message"
+            taxType:
+              description: Tax Type
+              type: string
+              example: "VAT"

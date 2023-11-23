@@ -1,0 +1,89 @@
+@startuml
+
+class PurchaseGateway.UI.Http.Requests.ProcessPurchaseRequest
+abstract class PurchaseGateway.UI.Http.Responses.ProcessPurchaseResponse
+class PurchaseGateway.UI.Http.Responses.ProcessPurchaseFraudResponse
+class PurchaseGateway.UI.Http.Responses.ProcessPurchaseGeneralResponse
+
+class PurchaseGateway.UI.Http.Controllers.ProcessPurchaseController
+
+class PurchaseGateway.Application.Services.PurchaseProcess.ProcessPurchaseCommand
+class PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler
+
+class PurchaseGateway.Application.Services.SessionHandler
+class PurchaseGateway.Application.Services.Session
+
+class PurchaseGateway.Domain.Services.SiteConfiguration
+interface PurchaseGateway.Domain.Services.CheckFraudOnUserInput
+interface PurchaseGateway.Domain.Services.BillerMappingRetrievalOnPurchaseProcess
+interface PurchaseGateway.Domain.Services.BinRoutingRetrievalOnPurchaseProcess
+interface PurchaseGateway.Domain.Services.PerformTransactionWithBiller
+interface PurchaseGateway.Domain.Services.HandlePurchaseProcessingOnLegacy
+
+class PurchaseGateway.Domain.Model.Fraud.UserInputFraudAdvice
+class PurchaseGateway.Domain.Model.BillerMapping.BillerFields
+class PurchaseGateway.Domain.Model.Transaction.BillerResponse
+class PurchaseGateway.Domain.Model.BinRouting.RoutingCodes
+
+class PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.UserInputFraudAdviceTranslatingService
+class PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessAdapter
+class PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessTranslator
+
+class PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslatingService
+class PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessAdapter
+class PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslator
+
+class PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslatingService
+class PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerAdapter
+class PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslator
+
+class PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslatingService
+class PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessAdapter
+class PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslator
+
+class PurchaseGateway.Infrastructure.Domain.Services.Legacy.ProcessPurchaseOnLegacy
+
+
+PurchaseGateway.UI.Http.Controllers.ProcessPurchaseController -left- PurchaseGateway.UI.Http.Requests.ProcessPurchaseRequest : execute >
+PurchaseGateway.UI.Http.Controllers.ProcessPurchaseController - PurchaseGateway.UI.Http.Responses.ProcessPurchaseResponse : return >
+
+PurchaseGateway.UI.Http.Responses.ProcessPurchaseResponse <|-- PurchaseGateway.UI.Http.Responses.ProcessPurchaseFraudResponse
+PurchaseGateway.UI.Http.Responses.ProcessPurchaseResponse <|-- PurchaseGateway.UI.Http.Responses.ProcessPurchaseGeneralResponse
+
+PurchaseGateway.UI.Http.Controllers.ProcessPurchaseController -down- PurchaseGateway.Application.Services.PurchaseProcess.ProcessPurchaseCommand : initialize >
+PurchaseGateway.UI.Http.Controllers.ProcessPurchaseController -down- PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler - PurchaseGateway.Application.Services.PurchaseProcess.ProcessPurchaseCommand : execute >
+
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Application.Services.SessionHandler : use >
+PurchaseGateway.Application.Services.SessionHandler -left- PurchaseGateway.Application.Services.Session : maintain >
+
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.SiteConfiguration : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.CheckFraudOnUserInput : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.BillerMappingRetrievalOnPurchaseProcess : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.BinRoutingRetrievalOnPurchaseProcess : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.PerformTransactionWithBiller : use >
+PurchaseGateway.Application.Services.PurchaseProcess.NewPaymentProcessCommandHandler -down- PurchaseGateway.Domain.Services.HandlePurchaseProcessingOnLegacy : use >
+
+PurchaseGateway.Domain.Services.CheckFraudOnUserInput <|--down- PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.UserInputFraudAdviceTranslatingService
+PurchaseGateway.Domain.Services.BillerMappingRetrievalOnPurchaseProcess <|---down- PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslatingService
+PurchaseGateway.Domain.Services.BinRoutingRetrievalOnPurchaseProcess <|---down- PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslatingService
+PurchaseGateway.Domain.Services.PerformTransactionWithBiller <|---down- PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslatingService
+PurchaseGateway.Domain.Services.HandlePurchaseProcessingOnLegacy <|---down- PurchaseGateway.Infrastructure.Domain.Services.Legacy.ProcessPurchaseOnLegacy
+
+PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.UserInputFraudAdviceTranslatingService -down- PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessAdapter : use >
+PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessAdapter -down- PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessTranslator : use >
+PurchaseGateway.Infrastructure.Domain.Services.FraudAdvice.FraudAdviceForPurchaseProcessTranslator -down- PurchaseGateway.Domain.Model.Fraud.UserInputFraudAdvice : return >
+
+PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslatingService -down- PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessAdapter : use >
+PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessAdapter -down- PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslator : use >
+PurchaseGateway.Infrastructure.Domain.Services.BillerMapping.BillerMappingRetrievalForPurchaseProcessTranslator -down- PurchaseGateway.Domain.Model.BillerMapping.BillerFields : return >
+
+PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslatingService -down- PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerAdapter : use >
+PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerAdapter -down- PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslator : use >
+PurchaseGateway.Infrastructure.Domain.Services.Transaction.ProcessTransactionWithBillerTranslator -down- PurchaseGateway.Domain.Model.Transaction.BillerResponse : return >
+
+PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslatingService -down- PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessAdapter : use>
+PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessAdapter -down- PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslator : use >
+PurchaseGateway.Infrastructure.Domain.Services.BinRouting.RoutingCodeSearchForPurchaseProcessTranslator -down- PurchaseGateway.Domain.Model.BinRouting.RoutingCodes : return >
+
+@enduml

@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Model\Bundle" table="bundles">
+        <id name="id" type="string" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+        <field name="bundleId" type="BundleId" length="36" nullable="false" column="bundle_id"/>
+        <field name="addonId" type="AddonId" length="36" nullable="false" column="addon_id"/>
+        <field name="addonType" type="AddonType" length="36" column="addon_type"/>
+        <field name="requireActiveContent" type="boolean" column="require_active_content"/>
+    </entity>
+</doctrine-mapping>

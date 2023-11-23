@@ -1,0 +1,12 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Model\ProcessedBundleItem">
+        <field name="bundleId" type="BundleId" length="36" nullable="false" column="bundle_id"/>
+        <field name="addonCollection" type="AddonCollectionJsonSerializer" column="addon_ids"/>
+        <field name="subscriptionInfo" type="SubscriptionInfoJsonSerializer" column="subscription_details"/>
+        <field name="transactionCollection" type="TransactionCollectionJsonSerializer" column="transaction_details"/>
+    </entity>
+</doctrine-mapping>

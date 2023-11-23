@@ -1,0 +1,155 @@
+@startuml
+
+class PurchaseInitCommand {
+    + __construct(\n\tint $siteId,\n\tstring $authKey,\n\tstring $priceId,\n\tfloat $amount,\n\tint $initialDays,\n\tint $rebillDays,\n\tstring $currency,\n\tstring $bundleId,\n\tstring $addonId,\n\tstring $clientIp,\n\tstring $paymentType,\n\tstring $clientCountryCode\n)
+}
+class PurchaseInitCommandHandler {
+    + execute(PurchaseInitCommand $command)
+}
+PurchaseInitCommandHandler -- PurchaseInitCommand : executes >
+
+
+
+interface AuthorizationServiceInterface {
+    + bool authenticate(\n\tPurchaseInitCommand $initRequest\n)
+}
+PurchaseInitCommandHandler -- AuthorizationServiceInterface : uses >
+
+
+
+interface ConfigurationServiceInterface {
+    + bool isFraudEnabled(\n\tSiteId $siteId\n)
+}
+PurchaseInitCommandHandler -- ConfigurationServiceInterface : uses >
+
+
+
+
+interface TranslatingAdviceInterface {
+    + CaptchaAdvice retrieveCaptchaAdvice(\n\tSiteId $siteId,\n\tIP $ip\n)
+}
+
+
+
+package Domain/Model {
+    class Biller {
+        - name
+    }
+    class Cascade {
+        - string $currency
+        - Biller $biller
+    }
+    class FraudAdvice{
+        - string operation
+        - bool advice
+    }
+    TranslatingAdviceInterface -- FraudAdvice : retrieves >
+    PurchaseInitCommandHandler -- FraudAdvice : uses >
+    class Option {
+        - string $name
+        - PriceId $priceId
+        - BundleId $bundleId
+        - AddOnId $addOnId
+    }
+    class OptionCollection
+    OptionCollection *-- Option
+    class SiteId
+    class PaymentType
+    class Currency
+    class BundleId
+    class AddOnId
+    class PriceId
+}
+
+
+
+Cascade -- Biller
+interface CascadeServiceInterface {
+    + Cascade retrieveJoinCascade (\n\tSiteId $siteId,\n\tPaymentType $paymentType,\n\tCurrency $currency\n)
+}
+CascadeServiceInterface -- Cascade
+CascadeServiceInterface -- SiteId
+CascadeServiceInterface -- PaymentType
+CascadeServiceInterface -- Currency
+PurchaseInitCommandHandler -- CascadeServiceInterface : uses >
+
+
+
+interface CrossSaleServiceInterface {
+    + OptionCollection retrieveOptions(\n\tSiteId $siteId,\n\tBundleId $bundleId,\n\tAddOnId $addOnId,\n\tPriceId $priceId\n)
+}
+PurchaseInitCommandHandler -- CrossSaleServiceInterface : uses >
+CrossSaleServiceInterface -- OptionCollection : retrieves >
+CrossSaleServiceInterface -- SiteId
+CrossSaleServiceInterface -- BundleId
+CrossSaleServiceInterface -- AddOnId
+CrossSaleServiceInterface -- PriceId
+
+
+package Infrastructure {
+
+    interface Translator
+    interface CircuitBreaker
+
+    abstract ServiceClient {
+        + __construct(\n\tCircuitBreaker $circuitBreaker,\n\tTranslator $translator\n)
+    }
+    ServiceClient -- CircuitBreaker : requires >
+
+    abstract class Adapter {
+        + __construct(\n\tServiceClient $serviceClient)
+    }
+    Adapter -- ServiceClient : depends on >
+
+    abstract class Service {
+
+    }
+    Service -- Translator : depends on >
+}
+
+package Application/Services {
+    class TranslatingAdviceService {
+        + __construct(\n\tTranslatingAdviceClient $serviceClient,\n\tFraudTranslator $translator\n)
+        + CaptchaAdvice retrieveCaptchaAdvice(\n\tSiteId $siteId,\n\tIP $ip\n)
+    }
+
+    TranslatingAdviceService --|> Service
+    TranslatingAdviceService --> TranslatingAdviceInterface
+
+    TranslatingAdviceService -- CaptchaAdviceTranslator : uses >
+    TranslatingAdviceService -- FraudAdviceAdapter : uses >
+}
+
+
+package Infrastructure/Fraud {
+    FraudClient --|> ServiceClient
+
+    class CaptchaAdviceTranslator {
+        toCaptchaAdvice(bool $shouldShow)
+    }
+    CaptchaAdviceTranslator --> Translator
+
+    FraudAdviceAdapter --|> Adapter
+    FraudAdviceAdapter -- FraudClient : depends >
+}
+
+
+package Infrastructure/CrossSale {
+    CrossSaleServiceClient --|> ServiceClient
+    CrossSaleTranslator --> Translator
+    class CrossSaleAdapter {
+        + __construct(\n\tCrossSaleServiceClient $serviceClient,\n\tCrossSaleTranslator $translator\n)
+    }
+    CrossSaleService --|> Service
+    CrossSaleService --> CrossSaleServiceInterface
+    CrossSaleService -- CrossSaleTranslator : uses >
+    CrossSaleService -- CrossSaleServiceClient : uses >
+}
+
+
+CascadeService --> CascadeServiceInterface
+note top of CascadeService
+    For Purchase MVP, this implementation will be hard-coded
+    retrieve of Cascade with Rockegate (Biller) and USD (currency)
+end note
+@enduml

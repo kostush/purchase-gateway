@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="ProBillerNG\PurchaseGateway\Domain\Projector\ProjectedItem\BundleAddon" exclusion-policy="NONE">
+        <property name="bundleId" type="string"/>
+        <property name="requireActiveContent" type="bool"/>
+        <property name="addons" type="array"/>
+    </class>
+</serializer>

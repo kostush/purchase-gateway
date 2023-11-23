@@ -1,0 +1,4 @@
+type: string
+title: error
+example: Proper error message
+description: Error message related to your error

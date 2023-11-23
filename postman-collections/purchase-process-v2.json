@@ -1,0 +1,1027 @@
+{
+    "info": {
+        "_postman_id": "2a89dcad-6e6a-413a-a8fc-c8f5ca911dc9",
+        "name": "NG Member Creation Automatic X sells and bearer token",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Init(Initiliaze purchase) -> Run one before using Process(Create Member)",
+            "item": [
+                {
+                    "name": "Init purchase-test (2 day trial)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "var Token = JSON.stringify(postman.getResponseHeader(\"X-Auth-Token\"));",
+                                    "",
+                                    "var response = pm.response.json();",
+                                    "",
+                                    "console.log(\"Bearer Token: \" + Token)",
+                                    "console.log(\"Body: \" + JSON.stringify(response))",
+                                    "",
+                                    "pm.globals.set(\"Bearer_Token\", Token);",
+                                    "",
+                                    "",
+                                    "var sale_bundleId =  JSON.stringify(response.crossSellOptions[0].bundleId)",
+                                    "var sale_addonId = JSON.stringify(response.crossSellOptions[0].addonId)",
+                                    "var sale_priceid = JSON.stringify(response.crossSellOptions[0].priceId)",
+                                    "",
+                                    "console.log(\"Bundle ID: \" + sale_bundleId)",
+                                    "console.log(\"aDDON ID: \" + sale_addonId)",
+                                    "console.log(\"Price ID: \" + sale_priceid)",
+                                    "",
+                                    "pm.globals.set(\"xsale_bundleid\", sale_bundleId);",
+                                    "pm.globals.set(\"xsale_addonid\", sale_addonId);",
+                                    "pm.globals.set(\"xsale_priceid\", sale_priceid);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"siteId\"  : \"8e34c94e-135f-4acb-9141-58b3a6e56c74\",\r\n    \"bundleId\": \"5fd44440-2956-11e9-b210-d663bd873d93\",\r\n    \"addonId\" : \"670af402-2956-11e9-b210-d663bd873d93\",\r\n    \"priceId\" : \"f97d448c-2953-11e9-b210-d663bd873d93\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"10.10.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 1,\r\n    \"initialDays\": 2,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 39.95\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/init",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "init"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Init purchase-test (7 day trial)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "var Token = JSON.stringify(postman.getResponseHeader(\"X-Auth-Token\"));",
+                                    "",
+                                    "var response = pm.response.json();",
+                                    "",
+                                    "console.log(\"Bearer Token: \" + Token)",
+                                    "console.log(\"Body: \" + JSON.stringify(response))",
+                                    "",
+                                    "pm.globals.set(\"Bearer_Token\", Token);",
+                                    "",
+                                    "",
+                                    "var sale_bundleId =  JSON.stringify(response.crossSellOptions[0].bundleId)",
+                                    "var sale_addonId = JSON.stringify(response.crossSellOptions[0].addonId)",
+                                    "var sale_priceid = JSON.stringify(response.crossSellOptions[0].priceId)",
+                                    "",
+                                    "console.log(\"Bundle ID: \" + sale_bundleId)",
+                                    "console.log(\"aDDON ID: \" + sale_addonId)",
+                                    "console.log(\"Price ID: \" + sale_priceid)",
+                                    "",
+                                    "pm.globals.set(\"xsale_bundleid\", sale_bundleId);",
+                                    "pm.globals.set(\"xsale_addonid\", sale_addonId);",
+                                    "pm.globals.set(\"xsale_priceid\", sale_priceid);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"siteId\"  : \"8e34c94e-135f-4acb-9141-58b3a6e56c74\",\r\n    \"bundleId\": \"5fd44440-2956-11e9-b210-d663bd873d93\",\r\n    \"addonId\" : \"670af402-2956-11e9-b210-d663bd873d93\",\r\n    \"priceId\" : \"804e72c2-2956-11e9-b210-d663bd873d93\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"10.10.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 1,\r\n    \"initialDays\": 7,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 39.95\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/init",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "init"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Init purchase-test (Monthly)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "var Token = JSON.stringify(postman.getResponseHeader(\"X-Auth-Token\"));",
+                                    "",
+                                    "var response = pm.response.json();",
+                                    "",
+                                    "console.log(\"Bearer Token: \" + Token)",
+                                    "console.log(\"Body: \" + JSON.stringify(response))",
+                                    "",
+                                    "pm.globals.set(\"Bearer_Token\", Token);",
+                                    "",
+                                    "",
+                                    "var sale_bundleId =  JSON.stringify(response.crossSellOptions[0].bundleId)",
+                                    "var sale_addonId = JSON.stringify(response.crossSellOptions[0].addonId)",
+                                    "var sale_priceid = JSON.stringify(response.crossSellOptions[0].priceId)",
+                                    "",
+                                    "console.log(\"Bundle ID: \" + sale_bundleId)",
+                                    "console.log(\"aDDON ID: \" + sale_addonId)",
+                                    "console.log(\"Price ID: \" + sale_priceid)",
+                                    "",
+                                    "pm.globals.set(\"xsale_bundleid\", sale_bundleId);",
+                                    "pm.globals.set(\"xsale_addonid\", sale_addonId);",
+                                    "pm.globals.set(\"xsale_priceid\", sale_priceid);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"siteId\"  : \"8e34c94e-135f-4acb-9141-58b3a6e56c74\",\r\n    \"bundleId\": \"5fd44440-2956-11e9-b210-d663bd873d93\",\r\n    \"addonId\" : \"670af402-2956-11e9-b210-d663bd873d93\",\r\n    \"priceId\" : \"4c2300b6-f883-11e8-8eb2-f2801f1b9fd5\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"10.10.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 19.97,\r\n    \"initialDays\": 30,\r\n    \"rebillDays\": 30,\r\n    \"rebillAmount\": 19.97\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/init",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "init"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Init purchase-test (Yearly)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "var Token = JSON.stringify(postman.getResponseHeader(\"X-Auth-Token\"));",
+                                    "",
+                                    "var response = pm.response.json();",
+                                    "",
+                                    "console.log(\"Bearer Token: \" + Token)",
+                                    "console.log(\"Body: \" + JSON.stringify(response))",
+                                    "",
+                                    "pm.globals.set(\"Bearer_Token\", Token);",
+                                    "",
+                                    "",
+                                    "var sale_bundleId =  JSON.stringify(response.crossSellOptions[0].bundleId)",
+                                    "var sale_addonId = JSON.stringify(response.crossSellOptions[0].addonId)",
+                                    "var sale_priceid = JSON.stringify(response.crossSellOptions[0].priceId)",
+                                    "",
+                                    "console.log(\"Bundle ID: \" + sale_bundleId)",
+                                    "console.log(\"aDDON ID: \" + sale_addonId)",
+                                    "console.log(\"Price ID: \" + sale_priceid)",
+                                    "",
+                                    "pm.globals.set(\"xsale_bundleid\", sale_bundleId);",
+                                    "pm.globals.set(\"xsale_addonid\", sale_addonId);",
+                                    "pm.globals.set(\"xsale_priceid\", sale_priceid);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"siteId\"  : \"8e34c94e-135f-4acb-9141-58b3a6e56c74\",\r\n    \"bundleId\": \"5fd44440-2956-11e9-b210-d663bd873d93\",\r\n    \"addonId\" : \"670af402-2956-11e9-b210-d663bd873d93\",\r\n    \"priceId\" : \"7303969c-2956-11e9-b210-d663bd873d93\",\r\n    \"currency\": \"USD\",\r\n    \"clientIp\": \"10.10.109.185\",\r\n    \"paymentType\": \"cc\",\r\n    \"clientCountryCode\": \"CA\",\r\n    \"amount\": 14.97,\r\n    \"initialDays\": 365,\r\n    \"rebillDays\": 365,\r\n    \"rebillAmount\": 14.97\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/init",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "init"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Process (Create Member) -> Run one init request first",
+            "item": [
+                {
+                    "name": "Process purchase-test(with Selected Cross Sale)",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "console.log(\"Bearer Token: \" + pm.globals.get(\"Bearer_Token\"))"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{Bearer_Token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n\t\"member\": {\r\n\t\t\"address1\": \"123 Random Street\",\r\n\t\t\"address2\": \"Hello Boulevard\",\r\n\t\t\"city\": \"Montreal\",\r\n\t\t\"countryCode\": \"CA\",\r\n\t\t\"email\": \"test-purchase@test.mindgeek.com\",\r\n\t\t\"firstName\": \"Mister\",\r\n\t\t\"lastName\": \"Axe\",\r\n\t\t\"password\": \"test12345\",\r\n\t\t\"phone\": \"514-000-0911\",\r\n\t\t\"username\": \"test-purchase\",\r\n\t\t\"zipCode\": \"h1h1h1\"\r\n\t},\r\n\t\"payment\": {\r\n\t\t\"cardExpirationMonth\": \"3\",\r\n\t\t\"cardExpirationYear\": \"2022\",\r\n\t\t\"ccNumber\": \"4111111111111111\",\r\n\t\t\"cvv\": 355\r\n\t},\r\n\t\"selectedCrossSells\": [{\r\n\t\t\"priceId\": {{xsale_priceid}},\r\n            \"bundleId\": {{xsale_bundleid}},\r\n            \"addonId\": {{xsale_addonid}}\r\n\t}],\r\n\t\"siteId\": \"8e34c94e-135f-4acb-9141-58b3a6e56c74\"\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/process",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "process"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        },
+                        {
+                            "name": "Process purchase",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "type": "text",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "type": "text",
+                                        "value": "XDEBUG_SESSION=PHPSTORM"
+                                    },
+                                    {
+                                        "key": "X-API-Key",
+                                        "type": "text",
+                                        "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"siteId\": \"1a14b3ea-0849-4387-871d-cbe0a92b56ab\",\n  \"priceId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"amount\": 10.99,\n  \"initialDays\": 10,\n  \"rebillDays\": 20,\n  \"rebillAmount\": 20,\n  \"currency\": \"CAD\",\n  \"bundleId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"addOnId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"clientIp\": \"192.168.1.1\",\n  \"paymentType\": \"cc\",\n  \"clientCountryCode\": \"CA\"\n}"
+                                },
+                                "url": {
+                                    "raw": "{{apiroot}}/api/v1/purchase/process",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "purchase",
+                                        "process"
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Server",
+                                    "value": "openresty"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/7.2.12"
+                                },
+                                {
+                                    "key": "WWW-Authenticate",
+                                    "value": "Bearer realm=\"JWT\""
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Tue, 29 Jan 2019 17:03:10 GMT"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"code\": 0,\n    \"error\": \"Missing auth token\"\n}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Process purchase-test(without Selected Cross Sale)",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "console.log(\"Bearer Token: \" + pm.globals.get(\"Bearer_Token\"))"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{Bearer_Token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Cookie",
+                                "type": "text",
+                                "value": "XDEBUG_SESSION=PHPSTORM"
+                            },
+                            {
+                                "key": "X-API-Key",
+                                "type": "text",
+                                "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n\t\"member\": {\r\n\t\t\"address1\": \"123 Random Street\",\r\n\t\t\"address2\": \"Hello Boulevard\",\r\n\t\t\"city\": \"Montreal\",\r\n\t\t\"countryCode\": \"CA\",\r\n\t\t\"email\": \"test-purchase@test.mindgeek.com\",\r\n\t\t\"firstName\": \"Mister\",\r\n\t\t\"lastName\": \"Axe\",\r\n\t\t\"password\": \"test12345\",\r\n\t\t\"phone\": \"514-000-0911\",\r\n\t\t\"username\": \"test-purchase\",\r\n\t\t\"zipCode\": \"h1h1h1\"\r\n\t},\r\n\t\"payment\": {\r\n\t\t\"cardExpirationMonth\": \"3\",\r\n\t\t\"cardExpirationYear\": \"2022\",\r\n\t\t\"ccNumber\": \"4111111111111111\",\r\n\t\t\"cvv\": 355\r\n\t},\r\n\t\"siteId\": \"8e34c94e-135f-4acb-9141-58b3a6e56c74\"\r\n}"
+                        },
+                        "url": {
+                            "raw": "stage-ord-purchase-gateway.probiller.com/api/v1/purchase/process",
+                            "host": [
+                                "stage-ord-purchase-gateway",
+                                "probiller",
+                                "com"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "purchase",
+                                "process"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Process purchase",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "type": "text",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "type": "text",
+                                        "value": "XDEBUG_SESSION=PHPSTORM"
+                                    },
+                                    {
+                                        "key": "X-API-Key",
+                                        "type": "text",
+                                        "value": "9276b15e-258d-4bfe-8bd9-74f25dc3f918"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"siteId\": \"1a14b3ea-0849-4387-871d-cbe0a92b56ab\",\n  \"priceId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"amount\": 10.99,\n  \"initialDays\": 10,\n  \"rebillDays\": 20,\n  \"rebillAmount\": 20,\n  \"currency\": \"CAD\",\n  \"bundleId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"addOnId\": \"63d64f10-a946-4226-82fe-d7abe11608a3\",\n  \"clientIp\": \"192.168.1.1\",\n  \"paymentType\": \"cc\",\n  \"clientCountryCode\": \"CA\"\n}"
+                                },
+                                "url": {
+                                    "raw": "{{apiroot}}/api/v1/purchase/process",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "purchase",
+                                        "process"
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Server",
+                                    "value": "openresty"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "key": "Transfer-Encoding",
+                                    "value": "chunked"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "X-Powered-By",
+                                    "value": "PHP/7.2.12"
+                                },
+                                {
+                                    "key": "WWW-Authenticate",
+                                    "value": "Bearer realm=\"JWT\""
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Date",
+                                    "value": "Tue, 29 Jan 2019 17:03:10 GMT"
+                                },
+                                {
+                                    "key": "Access-Control-Allow-Origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"code\": 0,\n    \"error\": \"Missing auth token\"\n}"
+                        },
+                        {
+                            "name": "Get advice",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "name": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Cookie",
+                                        "value": "XDEBUG_SESSION=PHPSTORM",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{apiroot}}/api/advice/site/1a14b3ea-0849-4387-871d-cbe0a92b56ab",
+                                    "host": [
+                                        "{{apiroot}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "advice",
+                                        "site",
+                                        "1a14b3ea-0849-4387-871d-cbe0a92b56ab"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Date",
+                                    "value": "Fri, 28 Dec 2018 15:03:22 GMT"
+                                },
+                                {
+                                    "key": "Server",
+                                    "value": "Apache"
+                                },
+                                {
+                                    "key": "Cache-Control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "Content-Length",
+                                    "value": "18"
+                                },
+                                {
+                                    "key": "Connection",
+                                    "value": "close"
+                                },
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n    \"captcha\": \"true\"\n}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

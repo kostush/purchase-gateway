@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="ProBillerNG\PurchaseGateway\Domain\Model\BaseProcessedItem" table="processed_items" inheritance-type="SINGLE_TABLE">
+        <id name="itemId" type="ItemId" column="item_id"/>
+
+        <discriminator-column name="type" type="string" length="36"/>
+        <discriminator-map>
+            <discriminator-mapping value="bundle" class="ProBillerNG\PurchaseGateway\Domain\Model\ProcessedBundleItem"/>
+        </discriminator-map>
+
+    </entity>
+</doctrine-mapping>

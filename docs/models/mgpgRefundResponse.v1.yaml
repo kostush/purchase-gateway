@@ -1,0 +1,102 @@
+title: mgpgRefundResponse
+type: object
+description: MGPG refund Response
+properties:
+  sessionId:
+    description: user flow unique id.
+    type: string
+    example: 7cb0496c-23d8-47a8-b8b4-49eecb719ab0
+  correlationId:
+    description: event chain unique id across services
+    type: string
+    example: 6bee0231-181e-43f1-9243-2c2ae9aaa628
+  transactionId:
+    description: transaction Id
+    type: string
+    example: 6bee0231-181e-43f1-9243-2c2ae9aaa628
+  invoice:
+    description: invoice of refund
+    type: object
+    required:
+      - status
+    properties:
+      invoiceId:
+        description: Invoice Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      memberId:
+        description: member Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      usingMemberProfile:
+        description: Member profile is used or ont
+        type: boolean
+        example: true
+      previousTransactionId:
+        description: previous transaction Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      amount:
+        description: Refund amount
+        type: string
+        format: double
+        example: 10.1
+      reason:
+        description: Reason of refund
+        type: string
+        example: The resone of refund
+      status:
+        description: Status of refund
+        type: string
+        example: success
+      code:
+        description: Status of refund
+        type: string
+        example: 100
+      businessTransactionOperation:
+        description: Business Transaction Operation
+        type: string
+        example: subscriptionPurchase
+      siteId:
+        description: Site Id
+        type: string
+        example: 63d64f10-a946-4226-82fe-d7abe11608a3
+      entitlements:
+        description: entitlements
+        type: array
+        items:
+          type: object
+          properties:
+            any:
+              type: object
+              properties:
+                data:
+                  type: string
+      otherData:
+        description: other data
+        type: object
+        properties:
+          any:
+            type: object
+            properties:
+              data:
+                type: string
+      nextAction:
+        description: The next action
+        type: object
+        properties:
+          type:
+            description: Type of next action
+            type: string
+            example: finishProcess
+          resolution:
+            description: resolution
+            type: string
+            example: client
+        required:
+          - type
+required:
+  - sessionId
+  - correlationId
+  - transactionId
+  - invoice

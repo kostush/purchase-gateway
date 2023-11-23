@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: purchase-gateway-postback-cleanup-cronjob
+  namespace: purchase-gateway
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: purchase-gateway-postback-cleanup-cronjob
+              image: purchase-gateway-image
+              args:
+                - php
+                - lumen/artisan
+                - ng:postback-jobs:cleanup
+          restartPolicy: OnFailure

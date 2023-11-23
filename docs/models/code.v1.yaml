@@ -1,0 +1,4 @@
+type: integer
+title: code
+example: 2323
+minimum: 1

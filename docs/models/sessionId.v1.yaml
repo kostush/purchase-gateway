@@ -1,0 +1,4 @@
+type: string
+title: sessionId
+description: sessionId
+example: 4591e28d-b00a-4131-b5c6-45824fe1def3

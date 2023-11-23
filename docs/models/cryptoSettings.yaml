@@ -1,0 +1,21 @@
+title: cryptoSettings
+type: object
+properties:
+  name:
+    description: Name of the cryptocurrency
+    type: string
+  icon:
+    description: Cryptocurrency abbreviation
+    type: string
+  code:
+    description: Cryptocurrency icon
+    type: string
+required:
+  - name
+  - icon
+  - code
+examples:
+  - name: Litecoin Testnet
+    icon: 'https://mgpg-assets-dev.web.app/LTCT.svg'
+    code: LTCT
+description: cryptoSettings
